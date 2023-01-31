@@ -1,0 +1,5 @@
+---
+title: "Under construction. Please enjoy this poster for now!"
+---
+
+![](images/carter_mcmahon_data_engineering_final_poster-1.png){fig-align="center"}
