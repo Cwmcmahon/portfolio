@@ -2,4 +2,12 @@
 title: "About"
 ---
 
-This will be the home of Carter McMahon's data science portfolio. Carter is...
+This will be the home of Carter McMahon's data science portfolio. Carter is a student at Willamette University's Master's in Data Science program, and he is set to graduate in August 2023. He is also, in descending order of personal importance, a:
+
+-   fiance
+-   proponent of FOSS
+-   player of board & video games
+-   ...
+-   (everything else)
+-   ...
+-   Scorpio
