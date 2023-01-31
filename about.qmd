@@ -2,4 +2,4 @@
 title: "About"
 ---
 
-This will be the home of Carter McMahon's data science portfolio.
+This will be the home of Carter McMahon's data science portfolio. Carter is...
