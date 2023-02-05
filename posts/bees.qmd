@@ -1,0 +1,12 @@
+---
+title: "Shiny App from a Data Viz Course Project on Bee Populations"
+format: 
+  html: 
+    page-layout: full
+image: ../images/bees.png
+---
+
+```{r}
+#| out-width: 100%
+knitr::include_app("https://cartermcmahon.shinyapps.io/bee_safe/", height = "700")
+```

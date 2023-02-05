@@ -1,0 +1,8 @@
+---
+title: "A Poster about FABTCG Made for Data Engineering"
+format: 
+  html: 
+    page-layout: full
+---
+
+![](../images/carter_mcmahon_data_engineering_final_poster-1.png){fig-align="center"}

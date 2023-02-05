@@ -1,0 +1,12 @@
+---
+title: "Shiny App Built from a Transit-focused Tidy Tuesday Project"
+format: 
+  html: 
+    page-layout: full
+image: ../images/transit.png
+---
+
+```{r}
+#| out-width: 100%
+knitr::include_app("https://cartermcmahon.shinyapps.io/Transit_Project/", height = "600")
+```

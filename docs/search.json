@@ -1,9 +1,30 @@
 [
   {
+    "objectID": "posts/bees.html",
+    "href": "posts/bees.html",
+    "title": "Shiny App from a Data Viz Course Project on Bee Populations",
+    "section": "",
+    "text": "Peek behind the curtain!\nknitr::include_app(\"https://cartermcmahon.shinyapps.io/bee_safe/\", height = \"700\")"
+  },
+  {
+    "objectID": "posts/transit.html",
+    "href": "posts/transit.html",
+    "title": "Shiny App Built from a Transit-focused Tidy Tuesday Project",
+    "section": "",
+    "text": "Peek behind the curtain!\nknitr::include_app(\"https://cartermcmahon.shinyapps.io/Transit_Project/\", height = \"600\")"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Carter’s portfolio is under construction.",
+    "section": "",
+    "text": "A Poster about FABTCG Made for Data Engineering\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShiny App Built from a Transit-focused Tidy Tuesday Project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShiny App from a Data Viz Course Project on Bee Populations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Carter is a student at Willamette University’s Master’s in Data Science program, and he is set to graduate in August 2023. He is also, in descending order of personal importance, a:\n\nfiance\nproponent of FOSS\nplayer of board & video games\n…\n(everything else)\n…\nScorpio"
+    "text": "Carter is a student at Willamette University’s Master’s in Data Science program, and he is set to graduate in August 2023. He is also, in descending order of personal importance, a:\n\nfiance\nproponent of FOSS\nplayer of board & video games\n…\n(everything else)\n…\nScorpio\n\nCarter is looking for a job at the moment, so if you are a potential employer interested in hiring him please reach out at his gmail address: carterwmcmahon."
   }
 ]

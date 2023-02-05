@@ -2,6 +2,18 @@
 title: "About"
 ---
 
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](./images/selfie.jpg){fig-align="center"}
+:::
+
+::: {.column width="10%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="50%"}
 Carter is a student at Willamette University's Master's in Data Science program, and he is set to graduate in August 2023. He is also, in descending order of personal importance, a:
 
 -   fiance
@@ -11,3 +23,8 @@ Carter is a student at Willamette University's Master's in Data Science program,
 -   (everything else)
 -   ...
 -   Scorpio
+
+Carter is looking for a job at the moment, so if you are a potential employer interested in hiring him please reach out at his gmail address: carterwmcmahon.
+:::
+
+::::
