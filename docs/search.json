@@ -2,23 +2,30 @@
   {
     "objectID": "posts/bees.html",
     "href": "posts/bees.html",
-    "title": "Shiny App from a Data Viz Course Project on Bee Populations",
+    "title": "Bee Populations",
     "section": "",
-    "text": "Peek behind the curtain!\nknitr::include_app(\"https://cartermcmahon.shinyapps.io/bee_safe/\", height = \"700\")"
+    "text": "This app uses data from the 2022 Week 2 Tidy Tuesday event. It was built in collaboration with Karyn Brehmeyer.\n\n\nPeek behind the curtain!\nknitr::include_app(\"https://cartermcmahon.shinyapps.io/bee_safe/\", height = \"700\")"
   },
   {
     "objectID": "posts/transit.html",
     "href": "posts/transit.html",
-    "title": "Shiny App Built from a Transit-focused Tidy Tuesday Project",
+    "title": "Transit Infrastracture Costs per KM",
     "section": "",
-    "text": "Peek behind the curtain!\nknitr::include_app(\"https://cartermcmahon.shinyapps.io/Transit_Project/\", height = \"600\")"
+    "text": "This app uses data from the 2021 Week 2 Tidy Tuesday event. It builds on the work of GitHub users jsakaluk and javendano58.\n\n\nPeek behind the curtain!\nknitr::include_app(\"https://cartermcmahon.shinyapps.io/Transit_Project/\", height = \"600\")"
+  },
+  {
+    "objectID": "posts/fabtcg.html",
+    "href": "posts/fabtcg.html",
+    "title": "Flesh and Blood TCG",
+    "section": "",
+    "text": "This is a poster I made for a Data Engineering course. The database I constructed for the project is outlined in an Entity Relationship Diagram at the bottom of the poster."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Carter’s portfolio is under construction.",
     "section": "",
-    "text": "A Poster about FABTCG Made for Data Engineering\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShiny App Built from a Transit-focused Tidy Tuesday Project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShiny App from a Data Viz Course Project on Bee Populations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Bee Populations\n\n\n\nShiny\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlesh and Blood TCG\n\n\n\nPoster\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTransit Infrastracture Costs per KM\n\n\n\nShiny\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",

@@ -1,10 +1,13 @@
 ---
-title: "Shiny App from a Data Viz Course Project on Bee Populations"
+title: "Bee Populations"
 format: 
   html: 
     page-layout: full
 image: ../images/bees.png
+categories: [Shiny]
 ---
+
+This app uses data from the 2022 Week 2 Tidy Tuesday event. It was built in collaboration with Karyn Brehmeyer.
 
 ```{r}
 #| out-width: 100%

@@ -1,8 +1,11 @@
 ---
-title: "A Poster about FABTCG Made for Data Engineering"
+title: "Flesh and Blood TCG"
 format: 
   html: 
     page-layout: full
+categories: [Poster]
 ---
+
+This is a poster I made for a Data Engineering course. The database I constructed for the project is outlined in an Entity Relationship Diagram at the bottom of the poster.
 
 ![](../images/carter_mcmahon_data_engineering_final_poster-1.png){fig-align="center"}

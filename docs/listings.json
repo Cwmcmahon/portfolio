@@ -2,9 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/bees.html",
       "/posts/fabtcg.html",
-      "/posts/transit.html",
-      "/posts/bees.html"
+      "/posts/transit.html"
     ]
   }
 ]
