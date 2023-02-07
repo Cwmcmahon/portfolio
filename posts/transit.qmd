@@ -7,7 +7,7 @@ image: ../images/transit.png
 categories: [Shiny]
 ---
 
-This app uses data from the 2021 Week 2 Tidy Tuesday event. It builds on the work of GitHub users jsakaluk and javendano58.
+This app uses data from the 2021 Week 2 Tidy Tuesday [event](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-01-05/readme.md). It builds on the work of GitHub users [jsakaluk](https://github.com/jsakaluk/TidyTuesday) and [javendano58](https://github.com/javendano585/TidyTuesday/tree/main/2021_Week_02).
 
 ```{r}
 #| out-width: 100%
