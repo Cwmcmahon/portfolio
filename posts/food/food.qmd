@@ -1,5 +1,6 @@
 ---
 title: "Environmental Impact of Foods"
+image: ../../images/emissions.png
 categories: [Table, Environment]
 ---
 
@@ -11,6 +12,8 @@ library(gt)
 library(paletteer)
 library(scales)
 ```
+
+This table shows the amount of emissions per kg of food produced for a variety of food products.
 
 ```{r, warnings = FALSE, message = FALSE}
 food_data <- read_csv('Food_Product_Emissions.csv') %>%

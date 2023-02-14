@@ -1,5 +1,6 @@
 ---
 title: "Popularity of Steam Games"
+image: ../images/games.png
 categories: [Table, Games]
 ---
 
@@ -9,6 +10,8 @@ library(tidyverse)
 library(magrittr)
 library(DT)
 ```
+
+This interactive table uses data from the 2021 Week 12 Tidy Tuesday [event](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-03-16).
 
 ```{r, warnings = FALSE, message = FALSE}
 games <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-16/games.csv') %>%

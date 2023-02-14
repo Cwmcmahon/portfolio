@@ -12,11 +12,8 @@ website:
 
 format:
   html:
-    theme: darkly
+    theme: sandstone
     css: styles.css
     toc: true
     code-fold: true
     code-summary: "Peek behind the curtain!"
-
-editor: visual
-
