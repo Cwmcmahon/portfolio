@@ -3,7 +3,7 @@ title: "Flesh and Blood TCG"
 format: 
   html: 
     page-layout: full
-categories: [Poster]
+categories: [Poster, Games]
 ---
 
 This is a poster I made for a Data Engineering course. The database I constructed for the project is outlined in an Entity Relationship Diagram at the bottom of the poster.

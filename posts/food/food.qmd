@@ -1,0 +1,37 @@
+---
+title: "Environmental Impact of Foods"
+categories: [Table, Environment]
+---
+
+```{r setup, echo = FALSE, warnings = FALSE, message = FALSE}
+#| include: false
+library(tidyverse)
+library(magrittr)
+library(gt)
+library(paletteer)
+library(scales)
+```
+
+```{r, warnings = FALSE, message = FALSE}
+food_data <- read_csv('Food_Product_Emissions.csv') %>%
+  rename(`Total Global Average` = `Total Global Average GHG Emissions per kg`) %>%
+  rename(`Food Product` = `Food product`) %>%
+  select(-`Unit of GHG Emissions`)
+
+food_table <- food_data %>% 
+  gt() %>%
+  tab_header(title = "Greenhouse Gas Emissions by Food Product",
+             subtitle = "Measured in kg of CO2 equivalents per kg of food produced") %>%
+  tab_source_note(source_note = "Source: AmandaRoseKnudsen on Kaggle - https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions") %>%
+  opt_stylize(style = 6) %>%
+  data_color(columns = `Total from Land to Retail`, 
+             colors = col_quantile(palette = c("Reds"),
+                                   domain = NULL,
+                                   n = 3),
+             alpha = 0.75) %>%
+  cols_move(columns = `Total from Land to Retail`, after = `Food Product`) %>%
+  cols_align(align = "center") %>%
+  cols_hide(`Total Global Average`)
+
+food_table
+```

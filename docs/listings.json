@@ -3,7 +3,9 @@
     "listing": "/index.html",
     "items": [
       "/posts/bees.html",
+      "/posts/food/food.html",
       "/posts/fabtcg.html",
+      "/posts/steam.html",
       "/posts/transit.html"
     ]
   }
