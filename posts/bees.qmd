@@ -4,7 +4,7 @@ format:
   html: 
     page-layout: full
 image: ../images/bees.png
-categories: [Shiny, Environment]
+categories: [Interactive, Environment]
 ---
 
 This app uses data from the 2022 Week 2 Tidy Tuesday [event](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-11/readme.md). It was built in collaboration with Karyn Brehmeyer.
