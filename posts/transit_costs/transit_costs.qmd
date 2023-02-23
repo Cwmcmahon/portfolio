@@ -3,7 +3,7 @@ title: "Transit Infrastracture Costs per KM"
 format: 
   html: 
     page-layout: full
-image: ../images/transit.png
+image: ../../images/transit_costs.png
 categories: [Interactive, Transit]
 ---
 

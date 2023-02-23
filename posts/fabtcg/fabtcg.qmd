@@ -8,4 +8,4 @@ categories: [Poster, Games]
 
 This is a poster I made for a Data Engineering course. The database I constructed for the project is outlined in an Entity Relationship Diagram at the bottom of the poster.
 
-![](../images/carter_mcmahon_data_engineering_final_poster-1.png){fig-align="center"}
+![](../../images/carter_mcmahon_data_engineering_final_poster-1.png){fig-align="center"}

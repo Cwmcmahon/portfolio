@@ -2,6 +2,9 @@
 title: "Environmental Impact of Foods"
 image: ../../images/emissions.png
 categories: [Table, Environment]
+bibliography: "bibliography.bib"
+nocite: |
+     @*
 ---
 
 ```{r setup, echo = FALSE, warnings = FALSE, message = FALSE}
@@ -37,4 +40,8 @@ food_table <- food_data %>%
   cols_hide(`Total Global Average`)
 
 food_table
+```
+
+```{r bibliography, include=FALSE}
+knitr::write_bib(names(sessionInfo()$otherPkgs), file="bibliography.bib")
 ```

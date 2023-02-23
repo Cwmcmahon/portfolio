@@ -3,7 +3,7 @@ title: "Bee Populations"
 format: 
   html: 
     page-layout: full
-image: ../images/bees.png
+image: ../../images/bees.png
 categories: [Interactive, Environment]
 ---
 

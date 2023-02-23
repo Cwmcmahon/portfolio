@@ -3,11 +3,12 @@
     "listing": "/index.html",
     "items": [
       "/posts/bart/bart.html",
-      "/posts/bees.html",
+      "/posts/bees/bees.html",
       "/posts/food/food.html",
-      "/posts/fabtcg.html",
-      "/posts/steam.html",
-      "/posts/transit.html"
+      "/posts/fabtcg/fabtcg.html",
+      "/posts/steam/steam.html",
+      "/posts/transit_costs/transit_costs.html",
+      "/posts/travel_emissions/travel_emissions.html"
     ]
   }
 ]

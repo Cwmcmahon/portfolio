@@ -1,10 +1,13 @@
 ---
-title: "Bart Ridership Graphic"
+title: "Bart Ridership"
 format: 
   html: 
     page-layout: full
 image: ../../images/bart.png
 categories: [Interactive, Transit]
+bibliography: "bibliography.bib"
+nocite: |
+     @*
 ---
 
 ```{r setup, echo = FALSE, warnings = FALSE, message = FALSE}
@@ -58,7 +61,8 @@ myZOOM <- 12
 myTILES <- "CartoDB.Positron"
 
 # Specifying the color palette for Leaflet
-pal <- colorFactor(c("#CC79A7", "#D55E00", "#E69F00", "#009E73", "#0072B2"), domain = entries_coord$origin %>% unique())
+pal <- colorFactor(c("#CC79A7", "#D55E00", "#E69F00", "#009E73", "#0072B2"), 
+                   domain = entries_coord$origin %>% unique())
 
 # Making the shared data for crosstalk
 shared_entries <- SharedData$new(entries_coord, ~id)
@@ -85,4 +89,9 @@ bscols(widths = c(2, NA, NA),
          addCircleMarkers(data = stations, label = ~Name, color = "#1A1A1A", fillOpacity = 0.7) %>%
          addCircleMarkers(label = ~origin, color = ~pal(origin), fillOpacity = 0.5)
 )
+```
+
+
+```{r bibliography, include=FALSE}
+knitr::write_bib(names(sessionInfo()$otherPkgs), file="bibliography.bib")
 ```
