@@ -34,7 +34,7 @@ emissions_gg <- emissions_data %>%
                                   "Road" = "#CC79A7",
                                   "Water" = "#0072B2")) +
     theme_minimal() +
-    labs(x = "Emissions (in grams of CO2 per passenger km)", 
+    labs(x = "Emissions (in grams of CO2 equivalents per passenger km)", 
          y = "Mode of transport", 
          title = "Emissions for Modes of Transport in the UK") +
     theme(panel.grid.major.y = element_blank())

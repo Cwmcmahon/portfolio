@@ -5,11 +5,125 @@ format:
     page-layout: full
 image: ../../images/transit_costs.png
 categories: [Interactive, Transit]
+bibliography: "bibliography.bib"
+nocite: |
+     @*
 ---
+
+```{r setup, echo = FALSE, warnings = FALSE, message = FALSE}
+library(shiny)
+library(tidyverse)
+library(tidytuesdayR)
+library(countrycode)
+library(ggflags)
+library(cowplot)
+```
 
 This app uses data from the 2021 Week 2 Tidy Tuesday [event](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-01-05/readme.md). It builds on the work of GitHub users [jsakaluk](https://github.com/jsakaluk/TidyTuesday) and [javendano58](https://github.com/javendano585/TidyTuesday/tree/main/2021_Week_02).
 
 ```{r}
+#| eval: false
+load(file = "transit_data.RData")
+transit_cost$cost_km_millions <- as.numeric(transit_cost$cost_km_millions)
+
+# Make g20 summary tibble by...
+transit_grouped <- transit_cost %>%
+  group_by(country) %>% # grouping by country
+  summarise(avg_cost = mean(cost_km_millions)) %>% # calculate mean
+  mutate(grp = case_when(country == "AU" ~ "g20", # categorize g20 nations
+                         country == "CA" ~ "g20",
+                         country == "SA" ~ "g20",
+                         country == "US" ~ "g20",
+                         country == "IN" ~ "g20",
+                         country == "RU" ~ "g20",
+                         country == "TR" ~ "g20",
+                         country == "AR" ~ "g20",
+                         country == "BR" ~ "g20",
+                         country == "MX" ~ "g20",
+                         country == "FR" ~ "g20",
+                         country == "DE" ~ "g20",
+                         country == "IT" ~ "g20",
+                         country == "UK" ~ "g20",
+                         country == "CN" ~ "g20",
+                         country == "ID" ~ "g20",
+                         country == "JP" ~ "g20",
+                         country == "KR" ~ "g20"),
+         country = fct_reorder(country, avg_cost), # sort countries by cost
+         code = tolower(country), # need lower case to match country flag icons
+         code = ifelse(code == "uk", "gb", code), # recode uk to gb for flag
+         country_name = countrycode(country, 
+                                    origin = 'iso2c', destination = 'cldr.short.en', 
+                                    nomatch = NULL),
+         region = countrycode(country, 
+                              origin = 'iso2c', destination = 'un.region.name', 
+                              nomatch = NULL)) %>%
+  drop_na(country, avg_cost)
+
+grouped_mean <- transit_grouped %>% # calculate g20 average
+  summarise(mean_avg = mean(avg_cost))
+
+# Define UI
+ui <- fillPage(
+
+    # Application title
+    titlePanel("Compare per KM Costs of Transit Infrastructure Across Countries"),
+
+    # Selectize input for countries
+      fillRow(
+          selectizeInput(
+            'countries',
+            'Select one or more countries to compare',
+            transit_grouped$country_name,
+            selected = (transit_grouped %>% filter(grp == "g20"))$country_name,
+            multiple = TRUE,
+            width = "100%"
+          ),
+          plotOutput("distPlot", height = "80%"),
+          flex = c(2,6),
+          height = "100%"
+      ),
+    padding = 20
+)
+
+# Define server logic
+server <- function(input, output) {
+    
+    output$distPlot <- renderPlot({
+      transit_grouped %>%
+        filter(country_name %in% input$countries) %>%
+        ggplot(aes(x = avg_cost, y = reorder(country_name, avg_cost))) +
+        geom_bar(stat = "identity") + 
+        geom_flag(x = -1, aes(country = code), size = case_when(-length(input$countries) + 25 >= 18 ~ 18,
+                                                                -length(input$countries) + 25 <= 5 ~ 5,
+                                                                TRUE ~ -length(input$countries) + 25))+
+        geom_vline(data = transit_grouped %>% 
+                     filter(country_name %in% input$countries) %>%
+                     summarize(mean = mean(avg_cost)), 
+                   mapping = aes(xintercept = mean), linetype = "dashed")+
+        cowplot::theme_minimal_vgrid(16) +
+        theme(
+          axis.title.y = element_blank(),
+          legend.position = "none",
+          axis.title.x = element_text(size = 20),
+          axis.text.x = element_text(size = 16),
+          plot.caption = element_text(size = 12)
+        )+
+        labs(caption = "Data Source: Transit Costs Project (https://transitcosts.com)",
+             x = "Average Cost of Transit Projects per KM (in millions of USD)")
+    })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+
+```
+
+```{r}
 #| out-width: 100%
+#| echo: false
 knitr::include_app("https://cartermcmahon.shinyapps.io/Transit_Project/", height = "600")
+```
+
+```{r bibliography, include=FALSE}
+knitr::write_bib(names(sessionInfo()$otherPkgs), file="bibliography.bib")
 ```
