@@ -4,7 +4,7 @@ format:
   html: 
     page-layout: full
 image: ../../images/bart.png
-categories: [Interactive, Transit]
+categories: [Transit Data]
 bibliography: "bibliography.bib"
 nocite: |
      @*
@@ -90,7 +90,6 @@ bscols(widths = c(2, NA, NA),
          addCircleMarkers(label = ~origin, color = ~pal(origin), fillOpacity = 0.5)
 )
 ```
-
 
 ```{r bibliography, include=FALSE}
 knitr::write_bib(names(sessionInfo()$otherPkgs), file="bibliography.bib")

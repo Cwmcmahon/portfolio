@@ -1,7 +1,7 @@
 ---
 title: "Popularity of Steam Games"
 image: ../../images/games.png
-categories: [Table, Games]
+categories: [Video/Board Games]
 bibliography: "bibliography.bib"
 nocite: |
      @*

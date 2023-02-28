@@ -1,7 +1,7 @@
 ---
 title: "UK Travel Emissions"
 image: ../../images/travel_emissions.png
-categories: [Interactive, Transit, Environment]
+categories: [Transit Data, Environmental]
 bibliography: "bibliography.bib"
 nocite: |
      @*

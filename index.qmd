@@ -1,5 +1,8 @@
 ---
-title: "Carter's portfolio is under construction."
+title: "Carter's portfolio is under construction"
+format: 
+  html: 
+    page-layout: full
 listing: 
   contents: posts
   type: grid

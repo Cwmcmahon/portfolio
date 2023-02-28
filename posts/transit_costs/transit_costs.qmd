@@ -4,7 +4,7 @@ format:
   html: 
     page-layout: full
 image: ../../images/transit_costs.png
-categories: [Interactive, Transit]
+categories: [Transit Data]
 bibliography: "bibliography.bib"
 nocite: |
      @*
@@ -115,7 +115,6 @@ server <- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
-
 ```
 
 ```{r}

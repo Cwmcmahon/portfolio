@@ -1,7 +1,7 @@
 ---
 title: "Environmental Impact of Foods"
 image: ../../images/emissions.png
-categories: [Table, Environment]
+categories: [Environmental]
 bibliography: "bibliography.bib"
 nocite: |
      @*

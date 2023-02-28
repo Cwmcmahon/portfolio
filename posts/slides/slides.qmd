@@ -1,0 +1,12 @@
+---
+title: "Portfolio Presentation in Reveal.js"
+format: 
+  html: 
+    page-layout: full
+image: ../../images/slides.png
+categories: [Transit Data]
+---
+
+This is a presentation with some of the contents from this portfolio. It was made using Quarto Markdown and Reveal.js
+
+<iframe src="https://cwmcmahon.github.io/presentation/portfolio_presentation#/title-slide" width="1135" height="638" allowfullscreen></iframe>
