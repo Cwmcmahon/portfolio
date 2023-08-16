@@ -1,28 +1,33 @@
 ---
-title: "About"
+title: "About me"
+format: 
+  html: 
+    page-layout: full
 ---
 
+::::: .column-screen-inset-shaded
 
-:::: {.columns}
+:::: {layout="[ 40, 60 ]"}
 
-::: {.column width="40%"}
-![](./images/selfie.jpg){fig-align="center"}
+::: {#image-column}
+![](./images/selfie.jpg)
 :::
 
-::: {.column width="10%"}
-<!-- empty column to create gap -->
-:::
+:::{#text-column}
+I am a recent graduate from Willamette University's MS in Data Science program, and before that I graduated from Willamette's College of Arts and Sciences with a BA in History. Through my MSDS program I have become proficient with tools including PostgreSQL, R (ggplot2, tidymodels, shiny, others), and Python (numpy, pandas, scikit-learn, matplotlib, seaborn). Additionally, my background in history helps me bring a different perspective, good research questions, and solid writing skills to my data science projects.
 
-::: {.column width="50%"}
-Carter is a student at Willamette University's Master's in Data Science program, and he is set to graduate in August 2023. He is also, in descending order of personal importance, a:
+For some more info about me, here are 2 truths and 1 lie:
 
--   fiance
--   proponent of FOSS
--   player of board & video games
--   (everything else)
--   Scorpio
+-   I am a second degree black belt in Taekwondo
 
-Carter is looking for a job at the moment, so if you are a potential employer interested in hiring him please reach out at his gmail address: carterwmcmahon.
+-   My third favorite movie is The Nice Guys (2016)
+
+-   I shook President Jimmy Carter's hand
+
+I am looking for a job at the moment, so if you are a potential employer interested in hiring me please reach out to me at my [email address](carterwmcmahon@gmail.com). If you do, I'd be happy to tell you which one of the three statements from above is a lie!
 :::
 
 ::::
+
+:::::
+
