@@ -14,8 +14,7 @@ format:
 :::
 
 :::{#text-column}
-I am a recent graduate from Willamette University's MS in Data Science program, and before that I graduated from Willamette's College of Arts and Sciences with a BA in History. Through my MSDS program I have become proficient with tools including PostgreSQL, R (ggplot2, tidymodels, shiny, others), and Python (numpy, pandas, scikit-learn, matplotlib, seaborn). Additionally, my background in history helps me bring a different perspective, good research questions, and solid writing skills to my data science projects.
-
+I am a recent graduate from Willamette University's MS in Data Science program, and before that I graduated from Willamette's College of Arts and Sciences with a BA in History. Through my MSDS program I have become proficient with tools including PostgreSQL, R (ggplot2, tidymodels, shiny, others), and Python (numpy, pandas, scikit-learn, matplotlib, seaborn). Additionally, my background in history helps me bring a different perspective, good research questions, and solid writing skills to my data science projects. <br style="line-height: 10px" />  
 For some more info about me, here are 2 truths and 1 lie:
 
 -   I am a second degree black belt in Taekwondo
@@ -24,7 +23,7 @@ For some more info about me, here are 2 truths and 1 lie:
 
 -   I shook President Jimmy Carter's hand
 
-I am looking for a job at the moment, so if you are a potential employer interested in hiring me please reach out to me at my [email address](carterwmcmahon@gmail.com). If you do, I'd be happy to tell you which one of the three statements from above is a lie!
+I am looking for a job at the moment, so if you are a potential employer interested in hiring me please reach out to me at my gmail address: carterwmcmahon. If you do, I'd be happy to tell you which one of the three statements from above is a lie!
 :::
 
 ::::
