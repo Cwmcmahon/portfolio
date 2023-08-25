@@ -17,6 +17,7 @@ library(ggiraph)
 This graphic was made using data from the UK Department for Business, Energy & Industrial Strategy, which I accessed through [Our World in Data](https://ourworldindata.org/grapher/carbon-footprint-travel-mode).
 
 ```{r warnings = FALSE, message = FALSE}
+#| code-summary: "Peek behind the curtain!"
 emissions_data <- read_csv("./travel_emissions.csv")
 
 emissions_gg <- emissions_data %>%

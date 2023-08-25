@@ -61,9 +61,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -122,11 +122,11 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="Environmental">Environmental <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Transit Data">Transit Data <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Video/Board Games">Video/Board Games <span class="quarto-category-count">(2)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -152,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Transit Data" data-listing-file-modified-sort="1677553928697" data-listing-reading-time-sort="4" data-listing-word-count-sort="667">
+<div class="g-col-1" data-index="0" data-categories="Transit Data" data-listing-file-modified-sort="1692991886951" data-listing-reading-time-sort="4" data-listing-word-count-sort="677">
 <a href="./posts/bart/bart.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -162,11 +162,6 @@ ul.task-list li input[type="checkbox"] {
 <h5 class="no-anchor card-title listing-title">
 Bart Ridership
 </h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Transit Data'); return false;">
-Transit Data
-</div>
-</div>
 <div class="card-text listing-description">
 Above, you’ll find the setup code for the interactive graphic on this page. Below, you’ll see the graphic and my code for making it. This graphic uses ridership and geospatial…
 </div>
@@ -179,7 +174,7 @@ Above, you’ll find the setup code for the interactive graphic on this page. Be
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="Environmental" data-listing-file-modified-sort="1677553933073" data-listing-reading-time-sort="4" data-listing-word-count-sort="696">
+<div class="g-col-1" data-index="1" data-categories="Environmental" data-listing-file-modified-sort="1692991919822" data-listing-reading-time-sort="4" data-listing-word-count-sort="701">
 <a href="./posts/bees/bees.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -189,11 +184,6 @@ Above, you’ll find the setup code for the interactive graphic on this page. Be
 <h5 class="no-anchor card-title listing-title">
 Bee Populations
 </h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Environmental'); return false;">
-Environmental
-</div>
-</div>
 <div class="card-text listing-description">
 This app uses data from the 2022 Week 2 Tidy Tuesday event. It was built in collaboration with Karyn Brehmeyer.
 </div>
@@ -206,7 +196,7 @@ This app uses data from the 2022 Week 2 Tidy Tuesday event. It was built in coll
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="Environmental" data-listing-file-modified-sort="1677553936469" data-listing-reading-time-sort="2" data-listing-word-count-sort="262">
+<div class="g-col-1" data-index="2" data-categories="Environmental" data-listing-file-modified-sort="1692991928694" data-listing-reading-time-sort="2" data-listing-word-count-sort="274">
 <a href="./posts/food/food.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -216,11 +206,6 @@ This app uses data from the 2022 Week 2 Tidy Tuesday event. It was built in coll
 <h5 class="no-anchor card-title listing-title">
 Environmental Impact of Foods
 </h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Environmental'); return false;">
-Environmental
-</div>
-</div>
 <div class="card-text listing-description">
 This table shows the amount of emissions per kg of food produced for a variety of food products.
 </div>
@@ -241,11 +226,6 @@ This table shows the amount of emissions per kg of food produced for a variety o
 <h5 class="no-anchor card-title listing-title">
 Flesh and Blood TCG
 </h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Video/Board Games'); return false;">
-Video/Board Games
-</div>
-</div>
 <div class="card-text listing-description">
 This is a poster I made for a Data Engineering course. The database I constructed for the project is outlined in an Entity Relationship Diagram at the bottom of the poster.
 </div>
@@ -258,7 +238,7 @@ This is a poster I made for a Data Engineering course. The database I constructe
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="Video/Board Games" data-listing-file-modified-sort="1677553939817" data-listing-reading-time-sort="2" data-listing-word-count-sort="256">
+<div class="g-col-1" data-index="4" data-categories="Video/Board Games" data-listing-file-modified-sort="1692991968938" data-listing-reading-time-sort="2" data-listing-word-count-sort="261">
 <a href="./posts/steam/steam.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -268,11 +248,6 @@ This is a poster I made for a Data Engineering course. The database I constructe
 <h5 class="no-anchor card-title listing-title">
 Popularity of Steam Games
 </h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Video/Board Games'); return false;">
-Video/Board Games
-</div>
-</div>
 <div class="card-text listing-description">
 This interactive table uses data from the 2021 Week 12 Tidy Tuesday event.
 </div>
@@ -295,11 +270,6 @@ This interactive table uses data from the 2021 Week 12 Tidy Tuesday event.
 <h5 class="no-anchor card-title listing-title">
 Portfolio Presentation in Reveal.js
 </h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Transit Data'); return false;">
-Transit Data
-</div>
-</div>
 <div class="card-text listing-description">
 This is a presentation with some of the contents from this portfolio. It was made using Quarto Markdown and Reveal.js
 </div>
@@ -312,7 +282,7 @@ This is a presentation with some of the contents from this portfolio. It was mad
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="Transit Data" data-listing-file-modified-sort="1677553944049" data-listing-reading-time-sort="8" data-listing-word-count-sort="1463">
+<div class="g-col-1" data-index="6" data-categories="Transit Data" data-listing-file-modified-sort="1692991967958" data-listing-reading-time-sort="8" data-listing-word-count-sort="1468">
 <a href="./posts/transit_costs/transit_costs.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -322,11 +292,6 @@ This is a presentation with some of the contents from this portfolio. It was mad
 <h5 class="no-anchor card-title listing-title">
 Transit Infrastracture Costs per KM
 </h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Transit Data'); return false;">
-Transit Data
-</div>
-</div>
 <div class="card-text listing-description">
 This app uses data from the 2021 Week 2 Tidy Tuesday event. It builds on the work of GitHub users jsakaluk and javendano58.
 </div>
@@ -339,7 +304,7 @@ This app uses data from the 2021 Week 2 Tidy Tuesday event. It builds on the wor
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="Transit Data,Environmental" data-listing-file-modified-sort="1677553924749" data-listing-reading-time-sort="3" data-listing-word-count-sort="403">
+<div class="g-col-1" data-index="7" data-categories="Transit Data,Environmental" data-listing-file-modified-sort="1692991985682" data-listing-reading-time-sort="3" data-listing-word-count-sort="408">
 <a href="./posts/travel_emissions/travel_emissions.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -349,14 +314,6 @@ This app uses data from the 2021 Week 2 Tidy Tuesday event. It builds on the wor
 <h5 class="no-anchor card-title listing-title">
 UK Travel Emissions
 </h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Transit Data'); return false;">
-Transit Data
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Environmental'); return false;">
-Environmental
-</div>
-</div>
 <div class="card-text listing-description">
 This graphic was made using data from the UK Department for Business, Energy &amp; Industrial Strategy, which I accessed through Our World in Data.
 </div>

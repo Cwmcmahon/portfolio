@@ -23,6 +23,7 @@ This app uses data from the 2021 Week 2 Tidy Tuesday [event](https://github.com/
 
 ```{r}
 #| eval: false
+#| code-summary: "Peek behind the curtain!"
 load(file = "transit_data.RData")
 transit_cost$cost_km_millions <- as.numeric(transit_cost$cost_km_millions)
 

@@ -6,5 +6,5 @@ format:
 listing: 
   contents: posts
   type: grid
-  categories: true
+  categories: false
 ---

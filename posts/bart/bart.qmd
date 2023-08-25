@@ -23,6 +23,7 @@ library(data.table)
 ```
 
 ```{r warning = FALSE, message = FALSE, results = 'hide'}
+#| code-summary: "Peek behind the curtain!"
 # Reading in the CSV file with average yearly entries for the 5 most frequented stations in 2022
 entries_coord <- read.csv("./entries_coord.csv")
 
@@ -71,6 +72,7 @@ shared_entries <- SharedData$new(entries_coord, ~id)
 Above, you'll find the setup code for the interactive graphic on this page. Below, you'll see the graphic and my code for making it. This graphic uses [ridership](https://www.bart.gov/about/reports/ridership) and [geospatial](https://www.bart.gov/schedules/developers/geo) data from BART.
 
 ```{r warnings = FALSE, message = FALSE}
+#| code-summary: "Peek behind the curtain!"
 #| column: screen-inset-shaded
 bscols(widths = c(2, NA, NA),
        list(filter_checkbox("routes", "Select From the 5 Most Frequented Origin Stations", shared_entries, ~origin)),

@@ -18,6 +18,7 @@ This interactive table uses data from the 2021 Week 12 Tidy Tuesday [event](http
 
 ```{r, warnings = FALSE, message = FALSE}
 #| column: screen-inset
+#| code-summary: "Peek behind the curtain!"
 games <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-16/games.csv') %>%
   select(-avg_peak_perc) %>%
   mutate(year = factor(year), month = factor(month, levels = month.name)) %>%
