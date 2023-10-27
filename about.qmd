@@ -14,7 +14,7 @@ format:
 :::
 
 :::{#text-column}
-I am a recent graduate from Willamette University's MS in Data Science program, and before that I graduated from Willamette's College of Arts and Sciences with a BA in History. Through my MSDS program I have become proficient with tools including PostgreSQL, R, and Python. Some specific packages I have used in my work are the ggplot2, tidymodels, shiny, leaflet, plotly, and flexdashboard on the R side, and numpy, pandas, scikit-learn, matplotlib, and seaborn in Python. Additionally, my background in history helps me bring a unique perspective, good research questions, and solid writing skills to my data science projects. <br style="line-height: 10px" />  
+I am a recent graduate from Willamette University's MS in Data Science program, and before that I graduated from Willamette's College of Arts and Sciences with a BA in History. Through my MSDS program I have become proficient with tools including PostgreSQL, R, and Python. Some specific packages I have used in my work are ggplot2, tidymodels, shiny, leaflet, plotly, and flexdashboard on the R side, and numpy, pandas, scikit-learn, matplotlib, and seaborn in Python. Additionally, my background in history helps me bring a unique perspective, good research questions, and solid writing skills to my data science projects. <br style="line-height: 10px" />  
 For some more fun info about me, here are two truths and one lie:
 
 -   I am a 2nd degree black belt in Taekwondo
