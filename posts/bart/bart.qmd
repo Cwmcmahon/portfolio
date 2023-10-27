@@ -27,8 +27,8 @@ library(data.table)
 # Reading in the CSV file with average yearly entries for the 5 most frequented stations in 2022
 entries_coord <- read.csv("./entries_coord.csv")
 
-# Reading in the KMZ file with BART station info, and altering it to match the above
-stations <- st_read("./BART_System_2020.kmz") %>% 
+# Reading in the KML file with BART station info, and altering it to match the above
+stations <- st_read("./doc.kml") %>% 
   mutate(Name = str_replace(Name, "St", "Street"),
          Name = case_when(Name == "19th Street/Oakland" ~ "19th Street Oakland",
                           Name == "12th Street/Oakland City Center" ~ "12th Street Oakland City Center",
