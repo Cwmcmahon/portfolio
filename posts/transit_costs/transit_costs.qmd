@@ -15,7 +15,7 @@ library(shiny)
 library(tidyverse)
 library(tidytuesdayR)
 library(countrycode)
-library(ggflags)
+#library(ggflags)
 library(cowplot)
 ```
 

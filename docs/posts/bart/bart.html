@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Carter McMahon - Bart Ridership</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="../../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="../../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="../../site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="../../site_libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="../../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="../../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="../../site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="../../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="../../site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="../../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="../../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="../../site_libs/leaflet-binding-2.1.2/leaflet.js"></script>
+<link href="../../site_libs/leaflet-easybutton-1.3.1/easy-button.css" rel="stylesheet">
+<script src="../../site_libs/leaflet-easybutton-1.3.1/easy-button.js"></script>
+<script src="../../site_libs/leaflet-easybutton-1.3.1/EasyButton-binding.js"></script>
+<link href="../../site_libs/leaflet-locationfilter2-0.1.1/locationfilter.css" rel="stylesheet">
+<script src="../../site_libs/leaflet-locationfilter2-0.1.1/locationfilter.js"></script>
+<script src="../../site_libs/leaflet-locationfilter2-0.1.1/locationfilter-bindings.js"></script>
+<link href="../../site_libs/ionicons-2.0.1/ionicons.min.css" rel="stylesheet">
+<script src="../../site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="../../site_libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../../site_libs/bootstrap-grid-3.4.1/bootstrap-grid.min.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Carter McMahon</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About me</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content page-columns page-full column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bart Ridership</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Transit Data</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<details>
+<summary>Peek behind the curtain!</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading in the CSV file with average yearly entries for the 5 most frequented stations in 2022</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>entries_coord <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./entries_coord.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading in the KML file with BART station info, and altering it to match the above</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>stations <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"./doc.kml"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Name =</span> <span class="fu">str_replace</span>(Name, <span class="st">"St"</span>, <span class="st">"Street"</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">Name =</span> <span class="fu">case_when</span>(Name <span class="sc">==</span> <span class="st">"19th Street/Oakland"</span> <span class="sc">~</span> <span class="st">"19th Street Oakland"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                          Name <span class="sc">==</span> <span class="st">"12th Street/Oakland City Center"</span> <span class="sc">~</span> <span class="st">"12th Street Oakland City Center"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                          Name <span class="sc">==</span> <span class="st">"16th Street/Mission"</span> <span class="sc">~</span> <span class="st">"16th Street Mission"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                          Name <span class="sc">==</span> <span class="st">"24th Street/Mission"</span> <span class="sc">~</span> <span class="st">"24th Street Mission"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">TRUE</span> <span class="sc">~</span> Name)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Name <span class="sc">!=</span> <span class="st">"Coliseum/Airport Connector"</span> <span class="sc">&amp;</span> </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>           Name <span class="sc">!=</span> <span class="st">"eBART Transfer"</span> <span class="sc">&amp;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span>(Name <span class="sc">%in%</span> entries_coord<span class="sc">$</span>origin)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading in CSV file with route info</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>routes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./routes.csv"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an SF object from the route data</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">setDT</span>(routes)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>sf <span class="ot">&lt;-</span> routes[</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  , {</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    geometry <span class="ot">&lt;-</span> <span class="fu">st_linestring</span>(<span class="at">x =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(orig_lng, orig_lat, dest_lng, dest_lat), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> T))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    geometry <span class="ot">&lt;-</span> <span class="fu">st_sfc</span>(geometry)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    geometry <span class="ot">&lt;-</span> <span class="fu">st_sf</span>(<span class="at">geometry =</span> geometry)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  , by <span class="ot">=</span> idx</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(sf) <span class="sc">%&gt;%</span> <span class="fu">cbind</span>(<span class="at">route =</span> routes<span class="sc">$</span>route, <span class="at">origin =</span> routes<span class="sc">$</span>origin, <span class="at">destination =</span> routes<span class="sc">$</span>destination)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting map info</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>myLAT <span class="ot">&lt;-</span> <span class="fl">37.799087467604025</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>myLNG <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">122.35496898239143</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>myZOOM <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>myTILES <span class="ot">&lt;-</span> <span class="st">"CartoDB.Positron"</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Specifying the color palette for Leaflet</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>pal <span class="ot">&lt;-</span> <span class="fu">colorFactor</span>(<span class="fu">c</span>(<span class="st">"#CC79A7"</span>, <span class="st">"#D55E00"</span>, <span class="st">"#E69F00"</span>, <span class="st">"#009E73"</span>, <span class="st">"#0072B2"</span>), </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>                   <span class="at">domain =</span> entries_coord<span class="sc">$</span>origin <span class="sc">%&gt;%</span> <span class="fu">unique</span>())</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Making the shared data for crosstalk</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>shared_entries <span class="ot">&lt;-</span> SharedData<span class="sc">$</span><span class="fu">new</span>(entries_coord, <span class="sc">~</span>id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Above, you’ll find the setup code for the interactive graphic on this page. Below, you’ll see the graphic and my code for making it. This graphic uses <a href="https://www.bart.gov/about/reports/ridership">ridership</a> and <a href="https://www.bart.gov/schedules/developers/geo">geospatial</a> data from BART.</p>
+<div class="cell page-columns page-full" data-warnings="false">
+<details>
+<summary>Peek behind the curtain!</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bscols</span>(<span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">list</span>(<span class="fu">filter_checkbox</span>(<span class="st">"routes"</span>, <span class="st">"Select From the 5 Most Frequented Origin Stations"</span>, shared_entries, <span class="sc">~</span>origin)),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">plot_ly</span>(shared_entries, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">x =</span> <span class="sc">~</span>year, <span class="at">y =</span> <span class="sc">~</span>total_riders, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="sc">~</span>origin, <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#CC79A7"</span>, <span class="st">"#D55E00"</span>, <span class="st">"#E69F00"</span>, <span class="st">"#009E73"</span>, <span class="st">"#0072B2"</span>), </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">name =</span> <span class="sc">~</span>origin, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">type =</span> <span class="st">"scatter"</span>, <span class="at">mode =</span> <span class="st">"line"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">width=</span><span class="st">"100%"</span>, <span class="at">height=</span><span class="dv">750</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>         <span class="fu">layout</span>(<span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'Year'</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'Total Number of Entering Riders'</span>)),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">leaflet</span>(shared_entries, <span class="at">width=</span><span class="st">"100%"</span>, <span class="at">height=</span><span class="dv">750</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>         <span class="fu">addProviderTiles</span>(myTILES) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>         <span class="fu">setView</span>(myLNG, myLAT, <span class="at">zoom =</span> myZOOM) <span class="sc">%&gt;%</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>         <span class="fu">addPolylines</span>(<span class="at">data =</span> sf, <span class="at">color =</span> <span class="st">"#1A1A1A"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>         <span class="fu">addCircleMarkers</span>(<span class="at">data =</span> stations, <span class="at">label =</span> <span class="sc">~</span>Name, <span class="at">color =</span> <span class="st">"#1A1A1A"</span>, <span class="at">fillOpacity =</span> <span class="fl">0.7</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>         <span class="fu">addCircleMarkers</span>(<span class="at">label =</span> <span class="sc">~</span>origin, <span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(origin), <span class="at">fillOpacity =</span> <span class="fl">0.5</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display column-screen-inset-shaded">
+<div class="container-fluid crosstalk-bscols">
+<div class="row">
+<div class="col-xs-2">
+<div id="routes" class="form-group crosstalk-input-checkboxgroup crosstalk-input">
+<label class="control-label" for="routes">Select From the 5 Most Frequented Origin Stations</label>
+<div class="crosstalk-options-group">
+<div class="checkbox">
+<label>
+<input type="checkbox" name="routes" value="16th Street Mission">
+<span>16th Street Mission</span>
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="routes" value="Civic Center/UN Plaza">
+<span>Civic Center/UN Plaza</span>
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="routes" value="Embarcadero">
+<span>Embarcadero</span>
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="routes" value="Montgomery Street">
+<span>Montgomery Street</span>
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="routes" value="Powell Street">
+<span>Powell Street</span>
+</label>
+</div>
+</div>
+<script type="application/json" data-for="routes">{
+  "map": {
+    "16th Street Mission": ["2012 16th Street Mission", "2013 16th Street Mission", "2014 16th Street Mission", "2015 16th Street Mission", "2016 16th Street Mission", "2017 16th Street Mission", "2018 16th Street Mission", "2019 16th Street Mission", "2020 16th Street Mission", "2021 16th Street Mission", "2022 16th Street Mission"],
+    "Civic Center/UN Plaza": ["2012 Civic Center/UN Plaza", "2013 Civic Center/UN Plaza", "2014 Civic Center/UN Plaza", "2015 Civic Center/UN Plaza", "2016 Civic Center/UN Plaza", "2017 Civic Center/UN Plaza", "2018 Civic Center/UN Plaza", "2019 Civic Center/UN Plaza", "2020 Civic Center/UN Plaza", "2021 Civic Center/UN Plaza", "2022 Civic Center/UN Plaza"],
+    "Embarcadero": ["2012 Embarcadero", "2013 Embarcadero", "2014 Embarcadero", "2015 Embarcadero", "2016 Embarcadero", "2017 Embarcadero", "2018 Embarcadero", "2019 Embarcadero", "2020 Embarcadero", "2021 Embarcadero", "2022 Embarcadero"],
+    "Montgomery Street": ["2012 Montgomery Street", "2013 Montgomery Street", "2014 Montgomery Street", "2015 Montgomery Street", "2016 Montgomery Street", "2017 Montgomery Street", "2018 Montgomery Street", "2019 Montgomery Street", "2020 Montgomery Street", "2021 Montgomery Street", "2022 Montgomery Street"],
+    "Powell Street": ["2012 Powell Street", "2013 Powell Street", "2014 Powell Street", "2015 Powell Street", "2016 Powell Street", "2017 Powell Street", "2018 Powell Street", "2019 Powell Street", "2020 Powell Street", "2021 Powell Street", "2022 Powell Street"]
+  },
+  "group": ["SharedDatafb6cf53f"]
+}</script>
+</div>
+</div>
+<div class="col-xs-5">
+<div id="htmlwidget-5b3675c30d53df7a7e8e" style="width:100%;height:750px;" class="plotly html-widget "></div>
+<script type="application/json" data-for="htmlwidget-5b3675c30d53df7a7e8e">{"x":{"visdat":{"39111e4b102f":["function () ","plotlyVisDat"]},"cur_data":"39111e4b102f","attrs":{"39111e4b102f":{"x":{},"y":{},"mode":"line","name":{},"color":{},"colors":["#CC79A7","#D55E00","#E69F00","#009E73","#0072B2"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"width":"100%","height":750,"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Year"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Total Number of Entering Riders"},"dragmode":"zoom","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],"y":[139202.39277360067,140010.91946532999,150795.83602723386,158395.82722336144,156370.26609359367,150235.71726896291,148425.88600123499,155766.96297562087,46161.244797600062,34500.705050670156,54506.142076039898],"mode":"line","name":"16th Street Mission","type":"scatter","key":["2012 16th Street Mission","2013 16th Street Mission","2014 16th Street Mission","2015 16th Street Mission","2016 16th Street Mission","2017 16th Street Mission","2018 16th Street Mission","2019 16th Street Mission","2020 16th Street Mission","2021 16th Street Mission","2022 16th Street Mission"],"set":"SharedDatafb6cf53f","marker":{"color":"rgba(204,121,167,1)","line":{"color":"rgba(204,121,167,1)"}},"textfont":{"color":"rgba(204,121,167,1)"},"error_y":{"color":"rgba(204,121,167,1)"},"error_x":{"color":"rgba(204,121,167,1)"},"line":{"color":"rgba(204,121,167,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],"y":[259923.27606384209,264939.88714589505,288729.61609236995,304376.64711019973,310434.46330202976,303024.18356464285,292666.31540973642,296275.82969545072,86517.27718538772,58011.427671946665,92371.22298136646],"mode":"line","name":"Civic Center/UN Plaza","type":"scatter","key":["2012 Civic Center/UN Plaza","2013 Civic Center/UN Plaza","2014 Civic Center/UN Plaza","2015 Civic Center/UN Plaza","2016 Civic Center/UN Plaza","2017 Civic Center/UN Plaza","2018 Civic Center/UN Plaza","2019 Civic Center/UN Plaza","2020 Civic Center/UN Plaza","2021 Civic Center/UN Plaza","2022 Civic Center/UN Plaza"],"set":"SharedDatafb6cf53f","marker":{"color":"rgba(213,94,0,1)","line":{"color":"rgba(213,94,0,1)"}},"textfont":{"color":"rgba(213,94,0,1)"},"error_y":{"color":"rgba(213,94,0,1)"},"error_x":{"color":"rgba(213,94,0,1)"},"line":{"color":"rgba(213,94,0,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],"y":[420902.64112818276,435648.17211969325,460121.78040689958,482021.07794865948,501900.44741448481,493388.57728610054,494357.97328135889,494666.78212956636,115961.20434039645,62382.370292826934,132584.92543760588],"mode":"line","name":"Embarcadero","type":"scatter","key":["2012 Embarcadero","2013 Embarcadero","2014 Embarcadero","2015 Embarcadero","2016 Embarcadero","2017 Embarcadero","2018 Embarcadero","2019 Embarcadero","2020 Embarcadero","2021 Embarcadero","2022 Embarcadero"],"set":"SharedDatafb6cf53f","marker":{"color":"rgba(230,159,0,1)","line":{"color":"rgba(230,159,0,1)"}},"textfont":{"color":"rgba(230,159,0,1)"},"error_y":{"color":"rgba(230,159,0,1)"},"error_x":{"color":"rgba(230,159,0,1)"},"line":{"color":"rgba(230,159,0,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],"y":[426758.17905831774,438422.9061707299,486052.85757173679,516960.32706007443,532491.55736525112,520056.82330133638,517834.12609587208,512191.53797751956,121325.24740259739,58462.448956878361,109155.70365142105],"mode":"line","name":"Montgomery Street","type":"scatter","key":["2012 Montgomery Street","2013 Montgomery Street","2014 Montgomery Street","2015 Montgomery Street","2016 Montgomery Street","2017 Montgomery Street","2018 Montgomery Street","2019 Montgomery Street","2020 Montgomery Street","2021 Montgomery Street","2022 Montgomery Street"],"set":"SharedDatafb6cf53f","marker":{"color":"rgba(0,158,115,1)","line":{"color":"rgba(0,158,115,1)"}},"textfont":{"color":"rgba(0,158,115,1)"},"error_y":{"color":"rgba(0,158,115,1)"},"error_x":{"color":"rgba(0,158,115,1)"},"line":{"color":"rgba(0,158,115,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null},{"x":[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],"y":[375096.12325494236,378896.64589504065,398747.54882527172,405600.20862762968,397460.77316066844,369843.03790801117,357517.43415521673,351098.60822131083,97201.330808080806,78766.511467403689,124434.18642951251],"mode":"line","name":"Powell Street","type":"scatter","key":["2012 Powell Street","2013 Powell Street","2014 Powell Street","2015 Powell Street","2016 Powell Street","2017 Powell Street","2018 Powell Street","2019 Powell Street","2020 Powell Street","2021 Powell Street","2022 Powell Street"],"set":"SharedDatafb6cf53f","marker":{"color":"rgba(0,114,178,1)","line":{"color":"rgba(0,114,178,1)"}},"textfont":{"color":"rgba(0,114,178,1)"},"error_y":{"color":"rgba(0,114,178,1)"},"error_x":{"color":"rgba(0,114,178,1)"},"line":{"color":"rgba(0,114,178,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0,"ctGroups":["SharedDatafb6cf53f"]},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="col-xs-5">
+<div id="htmlwidget-e8cd02e6172c65fd896c" style="width:100%;height:750px;" class="leaflet html-widget "></div>
+<script type="application/json" data-for="htmlwidget-e8cd02e6172c65fd896c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addSelect","args":["SharedDatafb6cf53f"]},{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addPolylines","args":[[[[{"lng":[-122.2716760457216,-122.2686539732401],"lat":[37.80359016475856,37.80849328724776]}]],[[{"lng":[-122.4197081435102,-122.4139364152155],"lat":[37.7650542393208,37.77939386076292]}]],[[{"lng":[-122.2686539732401,-122.2670634889679],"lat":[37.80849328724776,37.82908330072804]}]],[[{"lng":[-122.4184678760467,-122.4197081435102],"lat":[37.75223145165567,37.7650542393208]}]],[[{"lng":[-122.2699939627478,-122.2681588195891],"lat":[37.85257465083503,37.870316112485]}]],[[{"lng":[-122.4475873574918,-122.4337900883828],"lat":[37.72135058802746,37.73311239451958]}]],[[{"lng":[-122.1264596293894,-122.0756066931696],"lat":[37.69691620335457,37.69074797609731]}]],[[{"lng":[-122.1264596293894,-122.0869599532775],"lat":[37.69691620335457,37.66969738355485]}]],[[{"lng":[-122.0756066931696,-121.9280770983016],"lat":[37.69074797609731,37.69975069922069]}]],[[{"lng":[-122.4139364152155,-122.407017658827],"lat":[37.77939386076292,37.78487089662782]}]],[[{"lng":[-122.1968592134024,-122.2124401712401],"lat":[37.75368874735485,37.71297181882021]}]],[[{"lng":[-122.1968592134024,-122.1607506968877],"lat":[37.75368874735485,37.72178541354254]}]],[[{"lng":[-122.4662231559497,-122.4689119071663],"lat":[37.68462160749755,37.70633321337765]}]],[[{"lng":[-122.0290620224699,-122.0245523142489],"lat":[37.97382498587121,38.00332451679782]}]],[[{"lng":[-122.4689119071663,-122.4475873574918],"lat":[37.70633321337765,37.72135058802746]}]],[[{"lng":[-122.2681588195891,-122.2835440605503],"lat":[37.870316112485,37.87400975559205]}]],[[{"lng":[-122.2989484071957,-122.3169151214355],"lat":[37.90263522650326,37.92519241672761]}]],[[{"lng":[-122.3169151214355,-122.3529765513423],"lat":[37.92519241672761,37.93676312548746]}]],[[{"lng":[-122.3969009943397,-122.2951608275966],"lat":[37.79285391372564,37.80488709440741]}]],[[{"lng":[-121.9766263951319,-121.9394330281566],"lat":[37.55747442735056,37.50233497012078]}]],[[{"lng":[-122.2241794181938,-122.1968592134024],"lat":[37.7748944568355,37.75368874735485]}]],[[{"lng":[-122.4337900883828,-122.4184678760467],"lat":[37.73311239451958,37.75223145165567]}]],[[{"lng":[-122.0869599532775,-122.0571973085167],"lat":[37.66969738355485,37.63435057014377]}]],[[{"lng":[-122.1246473347904,-122.0673293828923],"lat":[37.89318568337656,37.90581393318745]}]],[[{"lng":[-122.2652268340202,-122.2241794181938],"lat":[37.79729295255645,37.7748944568355]}]],[[{"lng":[-122.2670634889679,-122.2699939627478],"lat":[37.82908330072804,37.85257465083503]}]],[[{"lng":[-122.2670634889679,-122.2513146330437],"lat":[37.82908330072804,37.84473931018153]}]],[[{"lng":[-122.386850499254,-122.416266663064],"lat":[37.60019409910356,37.63770374268261]}]],[[{"lng":[-121.8910940840804,-121.8746938431299],"lat":[37.41028235996109,37.36847828910375]}]],[[{"lng":[-122.401174710598,-122.3969009943397],"lat":[37.78944952039291,37.79285391372564]}]],[[{"lng":[-122.2835440605503,-122.2989484071957],"lat":[37.87400975559205,37.90263522650326]}]],[[{"lng":[-122.0245523142489,-121.9439800963828],"lat":[38.00332451679782,38.01891419708777]}]],[[{"lng":[-122.1837536902054,-122.1246473347904],"lat":[37.87843136876605,37.89318568337656]}]],[[{"lng":[-121.8894701561251,-121.7804333645259],"lat":[38.01694606342261,37.99539272912608]}]],[[{"lng":[-121.9439800963828,-121.8894701561251],"lat":[38.01891419708777,38.01694606342261]}]],[[{"lng":[-122.0559783959089,-122.0290620224699],"lat":[37.9284417959691,37.97382498587121]}]],[[{"lng":[-122.407017658827,-122.401174710598],"lat":[37.78487089662782,37.78944952039291]}]],[[{"lng":[-122.2513146330437,-122.1837536902054],"lat":[37.84473931018153,37.87843136876605]}]],[[{"lng":[-122.416266663064,-122.4439776627614],"lat":[37.63770374268261,37.66421053890038]}]],[[{"lng":[-122.3924140752073,-122.386850499254],"lat":[37.6159976796269,37.60019409910356]}]],[[{"lng":[-122.1607506968877,-122.1264596293894],"lat":[37.72178541354254,37.69691620335457]}]],[[{"lng":[-122.0571973085167,-122.0172560140017],"lat":[37.63435057014377,37.59073431646981]}]],[[{"lng":[-122.4439776627614,-122.4662231559497],"lat":[37.66421053890038,37.68462160749755]}]],[[{"lng":[-122.0172560140017,-121.9766263951319],"lat":[37.59073431646981,37.55747442735056]}]],[[{"lng":[-122.0673293828923,-122.0559783959089],"lat":[37.90581393318745,37.9284417959691]}]],[[{"lng":[-121.9394330281566,-121.8910940840804],"lat":[37.50233497012078,37.41028235996109]}]],[[{"lng":[-121.9280770983016,-121.8990739680306],"lat":[37.69975069922069,37.70168178489024]}]],[[{"lng":[-122.2951608275966,-122.2716760457216],"lat":[37.80488709440741,37.80359016475856]}]],[[{"lng":[-122.2951608275966,-122.2652268340202],"lat":[37.80488709440741,37.79729295255645]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"#1A1A1A","weight":5,"opacity":0.5,"fill":false,"fillColor":"#1A1A1A","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[37.41028235996109,37.36847828910375,37.97382498587121,37.68462160749755,37.90263522650326,37.70633321337765,38.00332451679782,37.55747442735056,37.73311239451958,37.66969738355485,37.92519241672761,37.75368874735485,37.870316112485,37.69691620335457,37.72135058802746,37.63770374268261,37.63435057014377,37.90581393318745,37.87400975559205,37.87843136876605,37.80488709440741,37.72178541354254,37.75223145165567,37.80359016475856,37.59073431646981,37.69975069922069,37.60019409910356,37.70168178489024,37.79729295255645,37.9284417959691,37.82908330072804,37.93676312548746,37.84473931018153,37.6159976796269,38.01891419708777,37.69074797609731,37.89318568337656,37.66421053890038,37.80849328724776,37.85257465083503,37.7748944568355,37.71297181882021,37.50233497012078,37.99539272912608,38.01694606342261],[-121.8910940840804,-121.8746938431299,-122.0290620224699,-122.4662231559497,-122.2989484071957,-122.4689119071663,-122.0245523142489,-121.9766263951319,-122.4337900883828,-122.0869599532775,-122.3169151214355,-122.1968592134024,-122.2681588195891,-122.1264596293894,-122.4475873574918,-122.416266663064,-122.0571973085167,-122.0673293828923,-122.2835440605503,-122.1837536902054,-122.2951608275966,-122.1607506968877,-122.4184678760467,-122.2716760457216,-122.0172560140017,-121.9280770983016,-122.386850499254,-121.8990739680306,-122.2652268340202,-122.0559783959089,-122.2670634889679,-122.3529765513423,-122.2513146330437,-122.3924140752073,-121.9439800963828,-122.0756066931696,-122.1246473347904,-122.4439776627614,-122.2686539732401,-122.2699939627478,-122.2241794181938,-122.2124401712401,-121.9394330281566,-121.7804333645259,-121.8894701561251],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#1A1A1A","weight":5,"opacity":0.5,"fill":true,"fillColor":"#1A1A1A","fillOpacity":0.7},null,null,null,null,["Milpitas","Berryessa/North San Jose","Concord","Colma","El Cerrito Plaza","Daly City","North Concord/Martinez","Fremont","Glen Park","Hayward","El Cerrito del Norte","Coliseum","Downtown Berkeley","Bay Fair","Balboa Park","San Bruno","South Hayward","Walnut Creek","North Berkeley","Orinda","West Oakland","San Leandro","24th Street Mission","12th Street Oakland City Center","Union City","West Dublin/Pleasanton","Millbrae","Dublin/Pleasanton","Lake Merritt","Pleasant Hill/Contra Costa Centre","MacArthur","Richmond","Rockridge","San Francisco International Airport","Pittsburg/Bay Point","Castro Valley","Lafayette","South San Francisco","19th Street Oakland","Ashby","Fruitvale","Oakland International Airport","Warm Springs/South Fremont","Antioch","Pittsburg Center"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782,37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782,37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782,37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782,37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782,37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782,37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782,37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782,37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782,37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782,37.7650542393208,37.77939386076292,37.79285391372564,37.78944952039291,37.78487089662782],[-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827,-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827,-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827,-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827,-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827,-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827,-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827,-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827,-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827,-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827,-122.4197081435102,-122.4139364152155,-122.3969009943397,-122.401174710598,-122.407017658827],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2","#CC79A7","#D55E00","#E69F00","#009E73","#0072B2"],"fillOpacity":0.5},null,null,null,null,["16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street","16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street","16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street","16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street","16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street","16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street","16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street","16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street","16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street","16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street","16th Street Mission","Civic Center/UN Plaza","Embarcadero","Montgomery Street","Powell Street"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},{"ctKey":["2012 16th Street Mission","2012 Civic Center/UN Plaza","2012 Embarcadero","2012 Montgomery Street","2012 Powell Street","2013 16th Street Mission","2013 Civic Center/UN Plaza","2013 Embarcadero","2013 Montgomery Street","2013 Powell Street","2014 16th Street Mission","2014 Civic Center/UN Plaza","2014 Embarcadero","2014 Montgomery Street","2014 Powell Street","2015 16th Street Mission","2015 Civic Center/UN Plaza","2015 Embarcadero","2015 Montgomery Street","2015 Powell Street","2016 16th Street Mission","2016 Civic Center/UN Plaza","2016 Embarcadero","2016 Montgomery Street","2016 Powell Street","2017 16th Street Mission","2017 Civic Center/UN Plaza","2017 Embarcadero","2017 Montgomery Street","2017 Powell Street","2018 16th Street Mission","2018 Civic Center/UN Plaza","2018 Embarcadero","2018 Montgomery Street","2018 Powell Street","2019 16th Street Mission","2019 Civic Center/UN Plaza","2019 Embarcadero","2019 Montgomery Street","2019 Powell Street","2020 16th Street Mission","2020 Civic Center/UN Plaza","2020 Embarcadero","2020 Montgomery Street","2020 Powell Street","2021 16th Street Mission","2021 Civic Center/UN Plaza","2021 Embarcadero","2021 Montgomery Street","2021 Powell Street","2022 16th Street Mission","2022 Civic Center/UN Plaza","2022 Embarcadero","2022 Montgomery Street","2022 Powell Street"],"ctGroup":"SharedDatafb6cf53f"}]}],"setView":[[37.79908746760402,-122.3549689823914],12,[]],"limits":{"lat":[37.36847828910375,38.01891419708777],"lng":[-122.4689119071663,-121.7804333645259]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-R-magrittr" class="csl-entry" role="listitem">
+Bache, Stefan Milton, and Hadley Wickham. 2022. <em>Magrittr: A Forward-Pipe Operator for r</em>. <a href="https://CRAN.R-project.org/package=magrittr">https://CRAN.R-project.org/package=magrittr</a>.
+</div>
+<div id="ref-R-leaflet" class="csl-entry" role="listitem">
+Cheng, Joe, Bhaskar Karambelkar, and Yihui Xie. 2023. <em>Leaflet: Create Interactive Web Maps with the JavaScript Leaflet Library</em>. <a href="https://rstudio.github.io/leaflet/">https://rstudio.github.io/leaflet/</a>.
+</div>
+<div id="ref-R-crosstalk" class="csl-entry" role="listitem">
+Cheng, Joe, and Carson Sievert. 2021. <em>Crosstalk: Inter-Widget Interactivity for HTML Widgets</em>. <a href="https://rstudio.github.io/crosstalk/">https://rstudio.github.io/crosstalk/</a>.
+</div>
+<div id="ref-R-data.table" class="csl-entry" role="listitem">
+Dowle, Matt, and Arun Srinivasan. 2023. <em>Data.table: Extension of ‘Data.frame‘</em>. <a href="https://CRAN.R-project.org/package=data.table">https://CRAN.R-project.org/package=data.table</a>.
+</div>
+<div id="ref-lubridate2011" class="csl-entry" role="listitem">
+Grolemund, Garrett, and Hadley Wickham. 2011. <span>“Dates and Times Made Easy with <span class="nocase">lubridate</span>.”</span> <em>Journal of Statistical Software</em> 40 (3): 1–25. <a href="https://www.jstatsoft.org/v40/i03/">https://www.jstatsoft.org/v40/i03/</a>.
+</div>
+<div id="ref-R-tibble" class="csl-entry" role="listitem">
+Müller, Kirill, and Hadley Wickham. 2023. <em>Tibble: Simple Data Frames</em>. <a href="https://CRAN.R-project.org/package=tibble">https://CRAN.R-project.org/package=tibble</a>.
+</div>
+<div id="ref-sf2018" class="csl-entry" role="listitem">
+Pebesma, Edzer. 2018. <span>“<span class="nocase">Simple Features for R: Standardized Support for Spatial Vector Data</span>.”</span> <em><span>The R Journal</span></em> 10 (1): 439–46. <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a>.
+</div>
+<div id="ref-R-sf" class="csl-entry" role="listitem">
+———. 2023. <em>Sf: Simple Features for r</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>.
+</div>
+<div id="ref-sf2023" class="csl-entry" role="listitem">
+Pebesma, Edzer, and Roger Bivand. 2023. <em><span class="nocase">Spatial Data Science: With applications in R</span></em>. <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9780429459016">https://doi.org/10.1201/9780429459016</a>.
+</div>
+<div id="ref-plotly2020" class="csl-entry" role="listitem">
+Sievert, Carson. 2020. <em>Interactive Web-Based Data Visualization with r, Plotly, and Shiny</em>. Chapman; Hall/CRC. <a href="https://plotly-r.com">https://plotly-r.com</a>.
+</div>
+<div id="ref-R-plotly" class="csl-entry" role="listitem">
+Sievert, Carson, Chris Parmer, Toby Hocking, Scott Chamberlain, Karthik Ram, Marianne Corvellec, and Pedro Despouy. 2023. <em>Plotly: Create Interactive Web Graphics via Plotly.js</em>. <a href="https://CRAN.R-project.org/package=plotly">https://CRAN.R-project.org/package=plotly</a>.
+</div>
+<div id="ref-R-lubridate" class="csl-entry" role="listitem">
+Spinu, Vitalie, Garrett Grolemund, and Hadley Wickham. 2023. <em>Lubridate: Make Dealing with Dates a Little Easier</em>. <a href="https://CRAN.R-project.org/package=lubridate">https://CRAN.R-project.org/package=lubridate</a>.
+</div>
+<div id="ref-ggplot22016" class="csl-entry" role="listitem">
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-R-stringr" class="csl-entry" role="listitem">
+———. 2022. <em>Stringr: Simple, Consistent Wrappers for Common String Operations</em>. <a href="https://CRAN.R-project.org/package=stringr">https://CRAN.R-project.org/package=stringr</a>.
+</div>
+<div id="ref-R-forcats" class="csl-entry" role="listitem">
+———. 2023a. <em>Forcats: Tools for Working with Categorical Variables (Factors)</em>. <a href="https://CRAN.R-project.org/package=forcats">https://CRAN.R-project.org/package=forcats</a>.
+</div>
+<div id="ref-R-tidyverse" class="csl-entry" role="listitem">
+———. 2023b. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
+</div>
+<div id="ref-tidyverse2019" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-R-readxl" class="csl-entry" role="listitem">
+Wickham, Hadley, and Jennifer Bryan. 2023. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
+</div>
+<div id="ref-R-ggplot2" class="csl-entry" role="listitem">
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2023. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.
+</div>
+<div id="ref-R-dplyr" class="csl-entry" role="listitem">
+Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+</div>
+<div id="ref-R-purrr" class="csl-entry" role="listitem">
+Wickham, Hadley, and Lionel Henry. 2023. <em>Purrr: Functional Programming Tools</em>. <a href="https://CRAN.R-project.org/package=purrr">https://CRAN.R-project.org/package=purrr</a>.
+</div>
+<div id="ref-R-readr" class="csl-entry" role="listitem">
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2023. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+</div>
+<div id="ref-R-tidyr" class="csl-entry" role="listitem">
+Wickham, Hadley, Davis Vaughan, and Maximilian Girlich. 2023. <em>Tidyr: Tidy Messy Data</em>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
