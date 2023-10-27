@@ -1,5 +1,5 @@
 ---
-title: "Here are some of the projects I've worked on:"
+title: "Some of my work, always in progress"
 format: 
   html: 
     page-layout: full
