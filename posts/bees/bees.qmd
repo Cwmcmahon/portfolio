@@ -4,7 +4,6 @@ format:
   html: 
     page-layout: full
 image: ../../images/bees.png
-categories: [Environmental]
 bibliography: "bibliography.bib"
 nocite: |
      @*
@@ -22,54 +21,78 @@ This app uses data from the 2022 Week 2 Tidy Tuesday [event](https://github.com/
 ```{r}
 #| eval: false
 #| code-summary: "Peek behind the curtain!"
-colony = read_csv('colony.csv')
-stressor = read_csv('stressor.csv')
+colony <- read_csv('colony.csv')
+stressor <- read_csv('stressor.csv')
 
 # Colony
-months = unique(colony$months)
-quarters = c("Q1", "Q2", "Q3", "Q4")
-m_to_q = setNames(quarters, months)
+months <- unique(colony$months)
+quarters <- c("Q1", "Q2", "Q3", "Q4")
+m_to_q <- setNames(quarters, months)
 
-colony_qtrs = colony %>% mutate(year = factor(year), months = factor(months), state = factor(state), quarter = factor(str_replace_all(months, m_to_q)))
+colony_qtrs <- colony |> 
+  mutate(year = factor(year), 
+         months = factor(months), 
+         state = factor(state), 
+         quarter = factor(str_replace_all(months, m_to_q)))
 
 colony_qtrs %<>% mutate(year_qtr = factor(paste("y", year, quarter, sep = "_")))
 
 # Stressor
-stressor_qtrs = stressor %>% mutate(year = factor(year), months = factor(months), state = factor(state), quarter = factor(str_replace_all(months, m_to_q)))
+stressor_qtrs <- stressor |> 
+  mutate(year = factor(year), 
+         months = factor(months), 
+         state = factor(state), 
+         quarter = factor(str_replace_all(months, m_to_q)))
 
 stressor_qtrs %<>% mutate(year_qtr = factor(paste("y", year, quarter, sep = "_")))
 
 stressor_qtrs$stressor %<>% gsub(pattern = "Disesases", replacement = "Diseases")
 
-stressors_spread = spread(data = stressor_qtrs, key = stressor, value = stress_pct)
+stressors_spread <- spread(data = stressor_qtrs, 
+                           key = stressor, 
+                           value = stress_pct)
 
 # Joining them!
-bees_join = inner_join(colony_qtrs, stressors_spread)
-
-bees_join %<>% filter(state != "United States")
+bees_join <- inner_join(colony_qtrs, stressors_spread) |> 
+  filter(state != "United States")
 
 # Filtering for Q1
-q1_annually = bees_join %>% filter(quarter == "Q1", state != "Other States")
+q1_annually = bees_join |> 
+  filter(quarter == "Q1", state != "Other States")
 
 # Prepping for app usage
-years = c(2015:2022)
+years <- c(2015:2022)
 
-state_diffs_all <- data.frame(year1 = character(), year2 = character(), state = character(), perc_diff = double())
+state_diffs_all <- data.frame(year1 = character(), 
+                              year2 = character(), 
+                              state = character(), 
+                              perc_diff = double())
 
-f.bees_diff_3 = function(year1, year2) {
-  y1 = q1_annually %>% filter(year == year1)
-  y2 = q1_annually %>% filter(year == year2)
-  f_diff = inner_join(y1, y2, by = c("state"))
-  f_diff %<>% mutate(diff = colony_n.y - colony_n.x)
-  f_diff %<>% mutate(perc_diff = diff / colony_n.x)
-  f_diff %<>% select(year.x, year.y, state, perc_diff)
-  f_diff %<>% mutate(year1 = year.x, year2 = year.y, year.x = NULL, year.y = NULL)
-  return(state_diffs_all %>% add_row(year1 = f_diff$year1, year2 = f_diff$year2, state = f_diff$state, perc_diff = f_diff$perc_diff))
+f.bees_diff <- function(year1, year2) {
+  y1 <- q1_annually |> 
+    filter(year == year1)
+  y2 <- q1_annually |> 
+    filter(year == year2)
+  f_diff <- inner_join(y1, y2, by = c("state")) |>
+    mutate(diff = colony_n.y - colony_n.x) |> 
+    mutate(perc_diff = diff / colony_n.x) |> 
+    select(year.x, 
+           year.y, 
+           state, 
+           perc_diff) |> 
+    mutate(year1 = year.x,
+           year2 = year.y,
+           .keep = "unused")
+  return(state_diffs_all |> 
+           add_row(year1 = f_diff$year1, 
+                   year2 = f_diff$year2, 
+                   state = f_diff$state, 
+                   perc_diff = f_diff$perc_diff))
 }
 
 for (n in c(1:7)){
   for (x in c((n + 1) : 8)){
-    state_diffs_all <- f.bees_diff_3(years[[n]], years[[x]])
+    state_diffs_all <- f.bees_diff(years[[n]], years[[x]])
   }
 }
 
@@ -111,18 +134,24 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   output$bee_plot <- renderPlotly({
-    # generate plot based on input$year from ui.R
-    p<-state_diffs_all%>%
-      filter(year1 == input$year[[1]] & year2 == input$year[[2]])%>%
-      ggplot(aes(x = perc_diff, y = reorder(state, perc_diff), fill = color)) +
+    # Generate plot based on input$year from ui.R
+    p <-state_diffs_all |>
+      filter(year1 == input$year[[1]] 
+             & year2 == input$year[[2]]) |>
+      ggplot(aes(x = perc_diff, 
+                 y = reorder(state, perc_diff), 
+                 fill = color)) +
         geom_col(width = 0.75) +
         scale_fill_manual(values = c("gold" = "#F3C622", "gray50" = "#3A3637")) +
-        scale_y_discrete(drop = TRUE, na.translate = FALSE) +
+        scale_y_discrete(drop = TRUE, 
+                         na.translate = FALSE) +
         scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
-        labs(x="Percent difference", y = "State",
+        labs(x="Percent difference", 
+             y = "State",
              title = paste("Percent difference in number of bee colonies \nbetween Q1", input$year[[1]], "and", input$year[[2]])) + 
         theme_minimal() +
-        theme(plot.margin = unit(c(15,3,3,3), "pt"), legend.position = "none")
+        theme(plot.margin = unit(c(15,3,3,3), "pt"), 
+              legend.position = "none")
     
     ggplotly(p, height = 600, tooltip = c("x"))
   })

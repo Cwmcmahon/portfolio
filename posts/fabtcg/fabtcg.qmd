@@ -3,9 +3,8 @@ title: "Flesh and Blood TCG"
 format: 
   html: 
     page-layout: full
-categories: [Video/Board Games]
 ---
 
-This is a poster I made for a Data Engineering course. The database I constructed for the project is outlined in an Entity Relationship Diagram at the bottom of the poster.
+I made this poster for my Data Engineering course, and it is meant to showcase some simple analysis made possible by a database that I had created using PostgreSQL. The entity relationship diagram at the bottom of the poster outlines the structure of that database, which stored data about cards from a trading card game called Flesh and Blood. I designed the database in a way that demonstrated my understanding of joins as well as primary and foreign keys.
 
 ![](../../images/carter_mcmahon_data_engineering_final_poster-1.png){fig-align="center"}

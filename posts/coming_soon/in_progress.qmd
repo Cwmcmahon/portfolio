@@ -1,0 +1,9 @@
+---
+title: "Projects in Progress"
+format: 
+  html: 
+    page-layout: full
+image: ../../images/in_progress.jpeg
+---
+
+I just added this page, but I'll be updating it with some of my in-progress projects shortly!

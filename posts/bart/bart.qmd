@@ -4,7 +4,6 @@ format:
   html: 
     page-layout: full
 image: ../../images/bart.png
-categories: [Transit Data]
 bibliography: "bibliography.bib"
 nocite: |
      @*
@@ -13,7 +12,6 @@ nocite: |
 ```{r setup, echo = FALSE, warnings = FALSE, message = FALSE}
 #| include: false
 library(tidyverse)
-library(magrittr)
 library(readxl)
 library(plotly)
 library(crosstalk)
@@ -28,16 +26,16 @@ library(data.table)
 entries_coord <- read.csv("./entries_coord.csv")
 
 # Reading in the KML file with BART station info, and altering it to match the above
-stations <- st_read("./doc.kml") %>% 
+stations <- st_read("./doc.kml") |> 
   mutate(Name = str_replace(Name, "St", "Street"),
          Name = case_when(Name == "19th Street/Oakland" ~ "19th Street Oakland",
                           Name == "12th Street/Oakland City Center" ~ "12th Street Oakland City Center",
                           Name == "16th Street/Mission" ~ "16th Street Mission",
                           Name == "24th Street/Mission" ~ "24th Street Mission",
-                          TRUE ~ Name)) %>%
-  filter(Name != "Coliseum/Airport Connector" & 
-           Name != "eBART Transfer" &
-           !(Name %in% entries_coord$origin)
+                          TRUE ~ Name)) |>
+  filter(Name != "Coliseum/Airport Connector" 
+         & Name != "eBART Transfer" 
+         & !(Name %in% entries_coord$origin)
 )
 
 # Reading in CSV file with route info
@@ -47,13 +45,17 @@ routes <- read.csv("./routes.csv")
 setDT(routes)
 sf <- routes[
   , {
-    geometry <- st_linestring(x = matrix(c(orig_lng, orig_lat, dest_lng, dest_lat), ncol = 2, byrow = T))
+    geometry <- st_linestring(x = matrix(c(orig_lng, orig_lat, dest_lng, dest_lat), 
+                                         ncol = 2, 
+                                         byrow = T))
     geometry <- st_sfc(geometry)
     geometry <- st_sf(geometry = geometry)
   }
   , by = idx
 ]
-sf <- st_as_sf(sf) %>% cbind(route = routes$route, origin = routes$origin, destination = routes$destination)
+sf <- st_as_sf(sf) |> cbind(route = routes$route, 
+                            origin = routes$origin, 
+                            destination = routes$destination)
 
 # Setting map info
 myLAT <- 37.799087467604025
@@ -63,33 +65,50 @@ myTILES <- "CartoDB.Positron"
 
 # Specifying the color palette for Leaflet
 pal <- colorFactor(c("#CC79A7", "#D55E00", "#E69F00", "#009E73", "#0072B2"), 
-                   domain = entries_coord$origin %>% unique())
+                   domain = entries_coord$origin |> 
+                     unique())
 
 # Making the shared data for crosstalk
 shared_entries <- SharedData$new(entries_coord, ~id)
 ```
 
-Above, you'll find the setup code for the interactive graphic on this page. Below, you'll see the graphic and my code for making it. This graphic uses [ridership](https://www.bart.gov/about/reports/ridership) and [geospatial](https://www.bart.gov/schedules/developers/geo) data from BART.
+I made this interactive graphic as a demonstration of my ability to use the R package Crosstalk. Crosstalk allows for data to be shared between multiple plots, so when the data are filtered by user input, all of the plots update without needing a server running in the background. This page is static!
+
+The [ridership](https://www.bart.gov/about/reports/ridership) and [geospatial](https://www.bart.gov/schedules/developers/geo) data used to make this graphic came from BART. If you click on the text that says "Peek behind the curtain!" above, you'll find the code that I used to prepare the data for this graphic. Clicking on the same text below will show you the code that generates this graphic from the processed data.
 
 ```{r warnings = FALSE, message = FALSE}
 #| code-summary: "Peek behind the curtain!"
 #| column: screen-inset-shaded
 bscols(widths = c(2, NA, NA),
        list(filter_checkbox("routes", "Select From the 5 Most Frequented Origin Stations", shared_entries, ~origin)),
-        plot_ly(shared_entries, 
-                x = ~year, y = ~total_riders, 
-                color = ~origin, colors = c("#CC79A7", "#D55E00", "#E69F00", "#009E73", "#0072B2"), 
-                name = ~origin, 
-                type = "scatter", mode = "line",
-                width="100%", height=750) %>%
+       plot_ly(shared_entries, 
+               x = ~year, 
+               y = ~total_riders, 
+               color = ~origin, 
+               colors = c("#CC79A7", "#D55E00", "#E69F00", "#009E73", "#0072B2"), 
+               name = ~origin, 
+               type = "scatter", 
+               mode = "line",
+               width="100%", 
+               height=750) |>
          layout(xaxis = list(title = 'Year'),
                 yaxis = list(title = 'Total Number of Entering Riders')),
-       leaflet(shared_entries, width="100%", height=750) %>% 
-         addProviderTiles(myTILES) %>%
-         setView(myLNG, myLAT, zoom = myZOOM) %>%
-         addPolylines(data = sf, color = "#1A1A1A") %>%
-         addCircleMarkers(data = stations, label = ~Name, color = "#1A1A1A", fillOpacity = 0.7) %>%
-         addCircleMarkers(label = ~origin, color = ~pal(origin), fillOpacity = 0.5)
+       leaflet(shared_entries, 
+               width="100%", 
+               height=750) |> 
+         addProviderTiles(myTILES) |>
+         setView(myLNG,
+                 myLAT, 
+                 zoom = myZOOM) |>
+         addPolylines(data = sf, 
+                      color = "#1A1A1A") |>
+         addCircleMarkers(data = stations, 
+                          label = ~Name, 
+                          color = "#1A1A1A", 
+                          fillOpacity = 0.7) |>
+         addCircleMarkers(label = ~origin, 
+                          color = ~pal(origin),
+                          fillOpacity = 0.5)
 )
 ```
 
