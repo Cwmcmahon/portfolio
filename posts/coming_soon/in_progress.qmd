@@ -4,6 +4,21 @@ format:
   html: 
     page-layout: full
 image: ../../images/in_progress.jpeg
+engine: knitr
+webr:
+  show-startup-message: false
+filters:
+  - webr
 ---
 
-I just added this page, but I'll be updating it with some of my in-progress projects shortly!
+I just added this page, but I'll be updating it with some of my in-progress projects shortly! Those will include machine learning projects, as well as projects utilizing WebR.
+
+```{webr-r}
+say_hello = function(name) {
+  msg = paste0("Hello ", name, "! Isn't WebR neat?")
+  return(msg)
+}
+
+# Put your name here!
+say_hello("")
+```
